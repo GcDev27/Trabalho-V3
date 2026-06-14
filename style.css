@@ -329,7 +329,7 @@ a:hover {
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
 }
 
@@ -446,7 +446,19 @@ a:hover {
     color: var(--white);
 }
 
+.testimonial-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
 .testimonial-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-item {
+    min-width: 100%;
+    box-sizing: border-box;
     text-align: center;
 }
 
@@ -479,11 +491,11 @@ a:hover {
 
 /* FOOTER */
 .site-footer {
-    background-color: #F8F9FA; /* Light background for better readability */
+    background-color: var(--text-dark); /* Fundo escuro premium */
     padding: 60px 10%;
-    color: var(--text-dark);
+    color: var(--white);
     font-family: var(--font-main);
-    border-top: 1px solid #EAEAEA;
+    border-top: none;
 }
 
 .footer-container {
@@ -502,18 +514,18 @@ a:hover {
     font-family: var(--font-logo);
     font-size: 2.2rem;
     margin-bottom: 20px;
-    color: var(--link-color);
+    color: var(--white);
 }
 
 .footer-info p {
-    color: var(--text-light);
+    color: #A0B2C6;
     font-size: 0.95rem;
     margin-bottom: 30px;
     line-height: 1.8;
 }
 
 .footer-info p strong {
-    color: var(--text-dark);
+    color: var(--white);
     font-weight: 600;
 }
 
@@ -527,7 +539,7 @@ a:hover {
     font-weight: 700;
     margin-bottom: 25px;
     letter-spacing: 1px;
-    color: var(--text-dark);
+    color: var(--white);
 }
 
 .footer-links ul {
@@ -539,7 +551,7 @@ a:hover {
 }
 
 .footer-links ul li a {
-    color: var(--text-light);
+    color: #A0B2C6;
     transition: color 0.3s;
     font-size: 0.95rem;
 }
@@ -576,7 +588,7 @@ a:hover {
 .footer-divider {
     border: 0;
     height: 1px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     margin: 30px 0;
 }
 
@@ -586,24 +598,395 @@ a:hover {
 }
 
 .social-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
-    border: 1px solid var(--text-light);
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    color: var(--text-light);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    font-size: 1.2rem;
     transition: all 0.3s;
-    margin: 0;
-    background: transparent;
 }
 
 .social-link:hover {
     background-color: var(--social-hover);
-    border-color: var(--social-hover);
     color: var(--white);
     transform: translateY(-3px);
+}
+
+/* UTILIDADES E ANIMAÇÕES */
+.hidden-card {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* MODAL STYLES */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-box {
+    background-color: var(--white);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    animation: scaleUp 0.3s ease-in-out;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--link-hover);
+}
+
+.modal-content-grid {
+    display: block;
+    width: 100%;
+}
+
+.modal-info {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-info h2 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.modal-description {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.modal-schedule h3 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-schedule ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.modal-schedule ul li {
+    padding: 10px 15px;
+    background-color: #F8F9FA;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #EAEAEA;
+}
+
+.modal-reserve-btn {
+    margin-top: auto;
+    width: 100%;
+}
+
+/* RESPONSIVO MODAL */
+@media (max-width: 768px) {
+    .modal-info {
+        padding: 20px;
+    }
+}
+
+/* FLUXO DE RESERVA MODAL */
+.flight-option {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.flight-option:hover {
+    border-color: var(--primary-color);
+    background-color: #f0edff;
+}
+
+.flight-option input[type="radio"] {
+    margin-right: 15px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.flight-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.flight-time {
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.flight-type {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.passengers-container {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.passengers-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.passengers-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #EAEAEA;
+    border-radius: 6px;
+    font-family: var(--font-main);
+}
+
+.form-group-modal {
+    margin-bottom: 15px;
+}
+
+.form-group-modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.form-group-modal input, .form-group-modal select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: var(--font-main);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.btn-voltar {
+    background-color: #ccc;
+    color: #333;
+    flex: 1;
+}
+
+.btn-voltar:hover {
+    background-color: #bbb;
+}
+
+.success-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 20px;
+    animation: scaleUp 0.5s ease-out;
+}
+
+.reservation-code {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    margin: 20px 0;
+    border: 1px dashed var(--primary-color);
+}
+
+/* MINHAS VIAGENS */
+.minhas-viagens-section {
+    padding: 80px 10%;
+    background-color: #f0f4f8;
+}
+
+.viagens-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.trip-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.trip-card img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.trip-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.trip-info h3 {
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.trip-info p {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.trip-code {
+    font-weight: bold;
+    color: #555;
+    background: #e9ecef;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.trip-progress-area {
+    width: 100%;
+    margin-top: 15px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 1s ease-out;
+}
+
+.trip-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #333;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
 }
 
 /* RESPONSIVENESS */

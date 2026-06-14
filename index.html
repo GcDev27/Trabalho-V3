@@ -25,6 +25,7 @@
                 <li><a href="#passeios">Passeios</a></li>
                 <li><a href="#destinos">Destinos</a></li>
                 <li><a href="#avaliacoes">Avaliações</a></li>
+                <li><a href="#minhas-viagens">Minhas Viagens</a></li>
             </ul>
         </nav>
         <div class="hero-content">
@@ -32,20 +33,20 @@
         </div>
         
         <div class="search-form-container">
-            <form class="search-form">
+            <form class="search-form" id="search-form">
                 <div class="form-group">
                     <label>Para onde vamos?</label>
-                    <input type="text" placeholder="Digite seu destino...">
+                    <input type="text" id="search-destination" placeholder="Digite seu destino...">
                 </div>
                 <div class="form-group">
                     <label>Quando?</label>
-                    <input type="date">
+                    <input type="date" id="search-start">
                 </div>
                 <div class="form-group">
                     <label>Retorno</label>
-                    <input type="date">
+                    <input type="date" id="search-end">
                 </div>
-                <button type="button" class="btn-primary">Buscar</button>
+                <button type="button" class="btn-primary" id="search-btn">Buscar</button>
             </form>
         </div>
     </header>
@@ -75,13 +76,13 @@
                 <img src="imagens/barcelona.png" alt="Barcelona">
                 <div class="card-content">
                     <h3>Barcelona, <span>Espanha</span></h3>
-                    <p>Pariatur autem harum ratione eveniet porro quidem distinctio, laudantium ducimus ipsam temporibus.</p>
+                    <p>Maravilhe-se com a Sagrada Família, passeie pelo vibrante Park Güell e sinta a energia única da cultura e gastronomia catalã.</p>
                     <div class="card-footer">
                         <div class="price">
                             <span class="current-price">R$ 3.900,00</span>
                             <span class="old-price">R$ 4.500,00</span>
                         </div>
-                        <button class="btn-secondary">Saiba mais</button>
+                        <button class="btn-secondary btn-saiba-mais" data-destino="barcelona">Saiba mais</button>
                     </div>
                 </div>
             </div>
@@ -90,13 +91,13 @@
                 <img src="imagens/porto.png" alt="Porto">
                 <div class="card-content">
                     <h3>Porto, <span>Portugal</span></h3>
-                    <p>Pariatur autem harum ratione eveniet porro quidem distinctio, laudantium ducimus ipsam temporibus.</p>
+                    <p>Deguste o vinho do Porto à beira do rio Douro, explore as ruelas coloridas da Ribeira e apaixone-se pelo charme lusitano.</p>
                     <div class="card-footer">
                         <div class="price">
                             <span class="current-price">R$ 3.700,00</span>
                             <span class="old-price">R$ 4.200,00</span>
                         </div>
-                        <button class="btn-secondary">Saiba mais</button>
+                        <button class="btn-secondary btn-saiba-mais" data-destino="porto">Saiba mais</button>
                     </div>
                 </div>
             </div>
@@ -105,13 +106,13 @@
                 <img src="imagens/milao.png" alt="Milão">
                 <div class="card-content">
                     <h3>Milão, <span>Itália</span></h3>
-                    <p>Pariatur autem harum ratione eveniet porro quidem distinctio, laudantium ducimus ipsam temporibus.</p>
+                    <p>A capital mundial da moda e do design. Visite o majestoso Duomo, faça compras e viva a autêntica essência italiana.</p>
                     <div class="card-footer">
                         <div class="price">
                             <span class="current-price">R$ 3.500,00</span>
                             <span class="old-price">R$ 4.000,00</span>
                         </div>
-                        <button class="btn-secondary">Saiba mais</button>
+                        <button class="btn-secondary btn-saiba-mais" data-destino="milao">Saiba mais</button>
                     </div>
                 </div>
             </div>
@@ -120,13 +121,13 @@
                 <img src="imagens/londres.png" alt="Londres">
                 <div class="card-content">
                     <h3>Londres, <span>Inglaterra</span></h3>
-                    <p>Pariatur autem harum ratione eveniet porro quidem distinctio, laudantium ducimus ipsam temporibus.</p>
+                    <p>Uma mistura perfeita de história e modernidade. Veja o Big Ben, ande na London Eye e sinta a atmosfera cosmopolita.</p>
                     <div class="card-footer">
                         <div class="price">
                             <span class="current-price">R$ 4.200,00</span>
                             <span class="old-price">R$ 4.800,00</span>
                         </div>
-                        <button class="btn-secondary">Saiba mais</button>
+                        <button class="btn-secondary btn-saiba-mais" data-destino="londres">Saiba mais</button>
                     </div>
                 </div>
             </div>
@@ -135,13 +136,13 @@
                 <img src="imagens/lauterbrunnen.png" alt="Lauterbrunnen">
                 <div class="card-content">
                     <h3>Lauterbrunnen, <span>Suíça</span></h3>
-                    <p>Pariatur autem harum ratione eveniet porro quidem distinctio, laudantium ducimus ipsam temporibus.</p>
+                    <p>O vale das 72 cachoeiras. Respire o ar puro dos Alpes, encante-se com chalés de madeira e viva um conto de fadas suíço.</p>
                     <div class="card-footer">
                         <div class="price">
                             <span class="current-price">R$ 3.900,00</span>
                             <span class="old-price">R$ 4.300,00</span>
                         </div>
-                        <button class="btn-secondary">Saiba mais</button>
+                        <button class="btn-secondary btn-saiba-mais" data-destino="lauterbrunnen">Saiba mais</button>
                     </div>
                 </div>
             </div>
@@ -150,13 +151,13 @@
                 <img src="imagens/paris.png" alt="Paris">
                 <div class="card-content">
                     <h3>Paris, <span>França</span></h3>
-                    <p>Pariatur autem harum ratione eveniet porro quidem distinctio, laudantium ducimus ipsam temporibus.</p>
+                    <p>A cidade luz te espera. Uma foto na Torre Eiffel, um passeio de barco pelo rio Sena e o clima mais romântico do mundo.</p>
                     <div class="card-footer">
                         <div class="price">
                             <span class="current-price">R$ 4.500,00</span>
                             <span class="old-price">R$ 5.300,00</span>
                         </div>
-                        <button class="btn-secondary">Saiba mais</button>
+                        <button class="btn-secondary btn-saiba-mais" data-destino="paris">Saiba mais</button>
                     </div>
                 </div>
             </div>
@@ -166,15 +167,44 @@
     <section id="avaliacoes" class="testimonials-section">
         <h2 class="section-title text-center">Avaliações dos Clientes</h2>
         <div class="testimonial-container">
-            <button class="nav-arrow prev"><i class="fas fa-chevron-left"></i></button>
-            <div class="testimonial-content">
-                <p class="quote">"Facilis nemo molestias eum eligendi assumenda consequuntur, alias cumque fugit tenetur laudantium in dolores delectus temporibus magni quae est quaerat, deleniti repellat provident veniam reiciendis atque neque! Optio eaque eveniet accusantium nesciunt omnis eum quidem sint odio molestiae dolore est aut laborum laudantium voluptates, rerum, architecto et."</p>
-                <div class="author-profile">
-                    <img src="imagens/patricia.png" alt="Patrícia">
-                    <h4>Patrícia, <span>Jornalista</span></h4>
+            <button class="nav-arrow prev" id="prev-testimonial"><i class="fas fa-chevron-left"></i></button>
+            <div class="testimonial-wrapper">
+                <div class="testimonial-content" id="testimonial-track">
+                    <!-- Avaliação 1 -->
+                    <div class="testimonial-item">
+                        <p class="quote">"A viagem para a Europa superou todas as minhas expectativas! Os guias foram excelentes, a hospedagem perfeita e cada detalhe do roteiro foi pensado com um carinho imenso. Definitivamente a melhor experiência turística da minha vida!"</p>
+                        <div class="author-profile">
+                            <img src="imagens/patricia.png" alt="Patrícia">
+                            <h4>Patrícia, <span>Jornalista</span></h4>
+                        </div>
+                    </div>
+                    <!-- Avaliação 2 -->
+                    <div class="testimonial-item">
+                        <p class="quote">"A viagem superou todas as minhas expectativas! Os destinos eram incríveis e tudo foi organizado com um cuidado excepcional. Com certeza voltarei a viajar com a Buenas Viagens em minhas próximas férias."</p>
+                        <div class="author-profile">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Carlos">
+                            <h4>Carlos, <span>Engenheiro</span></h4>
+                        </div>
+                    </div>
+                    <!-- Avaliação 3 -->
+                    <div class="testimonial-item">
+                        <p class="quote">"Experiência inesquecível. Conheci lugares que sempre sonhei e a estrutura fornecida foi impecável. O roteiro foi muito bem pensado para aproveitar cada segundo da viagem sem correrias."</p>
+                        <div class="author-profile">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Mariana">
+                            <h4>Mariana, <span>Fotógrafa</span></h4>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <button class="nav-arrow next"><i class="fas fa-chevron-right"></i></button>
+            <button class="nav-arrow next" id="next-testimonial"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- SEÇÃO MINHAS VIAGENS -->
+    <section id="minhas-viagens" class="minhas-viagens-section">
+        <h2 class="section-title">Minhas Viagens Reservadas</h2>
+        <div id="viagens-container" class="viagens-container">
+            <!-- Cards de viagens renderizados via JS -->
         </div>
     </section>
 
@@ -218,6 +248,29 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Modal de Detalhes -->
+    <div id="trip-modal" class="modal-overlay">
+        <div class="modal-box">
+            <button id="close-modal" class="close-btn">&times;</button>
+            <div class="modal-content-grid">
+                <div class="modal-info" id="modal-body-content">
+                    <!-- Conteúdo injetado via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Alteração de Voo -->
+    <div id="modal-alterar-voo" class="modal-overlay">
+        <div class="modal-box" style="max-width: 600px;">
+            <button id="close-modal-alterar" class="close-btn">&times;</button>
+            <div class="modal-info" id="modal-alterar-content">
+                <!-- Conteúdo injetado via JS -->
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
